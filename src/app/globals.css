@@ -3,7 +3,15 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif, Helvetica, Arial;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 @layer utilities {
@@ -76,3 +84,30 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.bghome {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.99)), 
+    url('/images/bghome.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; 
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0; 
+  padding: 0; 
+  overflow: hidden;
+}
+
+.navbar-bg {
+  background: transparent; 
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%; 
+  z-index: 10; 
+  padding: 1rem; 
+}
+   

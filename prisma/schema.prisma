@@ -47,6 +47,7 @@ model Evento {
   tipo           String?
   data           DateTime
   horario        String
+  horarioFim     DateTime
 
   // Relacionamento com Local
   localId        Int
@@ -60,4 +61,6 @@ model Evento {
   telefone       String?
 
   createdAt      DateTime  @default(now())
+
+  @@unique([localId, data, horario])
 }
