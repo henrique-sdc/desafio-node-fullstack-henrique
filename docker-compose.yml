@@ -1,0 +1,16 @@
+version: '3.9'
+name: orgeventos
+
+services:
+  db:
+    container_name: orgeventos-db
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: orgeventos
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    restart: always
