@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
 import db from '@/db/db';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 
 export async function getLocais() {
     const locais = await db.local.findMany({
@@ -34,29 +36,41 @@ export async function getEventos() {
     return eventos;
 }
 
+export async function getUsuario() {
+    const usuario = await db.usuario.findMany({
+        take: 1,
+        select: {
+            nome: true,
+        },
+    });
+
+    return usuario[0];
+}
+
 export default async function Home() {
     const locais = await getLocais();
     const eventos = await getEventos();
+    const usuarios = await getUsuario();
 
     return (
         <div className="bghome">
             <main className="space-y-12">
-                <div className="flex ml-24 mt-36 items-center">
+                <div className="flex flex-col md:flex-row md:ml-24 mt-36 items-center">
                     <Image
                         src="/images/corpo.svg"
                         alt="Logo da Empresa"
                         width={50}
                         height={50}
-                        style={{ width: 'auto', height: 'auto' }}
+                        className="w-auto h-auto"
                     />
                     <div className="ml-1">
-                        <h1 className="text-white text-3xl font-medium">Olá, Mariana</h1>
+                        <h1 className="text-white text-3xl font-medium">Olá, {usuarios.nome}</h1>
                         <p className="text-white text-sm mt-2">Confira todos os seus eventos e locais em um só lugar!</p>
                     </div>
                 </div>
 
-                <div className='ml-28 mr-28'>
-                    <div className="flex space-x-4">
+                <div className='mx-4 md:mx-28'>
+                    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                         <div className="flex-1">
                             <Alert className="flex items-center justify-between bg-[#2f3b28] border-0 text-white p-6">
                                 <div className="flex items-start">
@@ -97,8 +111,8 @@ export default async function Home() {
                     </div>
                 </div>
 
-                <div className='ml-28 mr-28'>
-                    <div className="flex space-x-4">
+                <div className='mx-4 md:mx-28'>
+                    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                         <div className="flex-1 bg-[#10141d] p-8 rounded-lg">
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-xl text-white">Últimos Locais Adicionados</h2>
@@ -109,11 +123,28 @@ export default async function Home() {
                                     {locais.length > 0 ? (
                                         locais.map((local, index) => (
                                             <TableRow key={local.nome} className={index % 2 === 0 ? 'bg-[#333b49]' : 'bg-[#10141d]'}>
-                                                <TableCell className="py-4 px-6">{local.nome}</TableCell>
-                                                <TableCell className="py-4 px-6">{local.endereco}</TableCell>
-                                                <TableCell className="py-4 px-6">{local.portoes.join(", ")}</TableCell>
-                                                <TableCell className="py-4 px-6 text-right">
-                                                    <MoreVertical className="text-blue-400 ml-auto" />
+                                                <TableCell className="py-4 px-2 md:px-6">{local.nome}</TableCell>
+                                                <TableCell className="py-4 px-2 md:px-6">{local.endereco}</TableCell>
+                                                <TableCell className="py-4 px-2 md:px-6">{local.portoes.join(", ")}</TableCell>
+                                                <TableCell className="py-4 px-2 md:px-6 text-right">
+                                                    <DropdownMenu>
+                                                        <DropdownMenuTrigger className='text-blue-400 ml-auto'>
+                                                            <MoreVertical />
+                                                            <span className="sr-only">Ações</span>
+                                                        </DropdownMenuTrigger>
+                                                        <DropdownMenuContent className='bg-[#333b49] border-none text-white'>
+                                                            <DropdownMenuItem asChild>
+                                                                <Link href={`/locais`}>
+                                                                    Ver
+                                                                </Link>
+                                                            </DropdownMenuItem>
+                                                            <DropdownMenuItem asChild>
+                                                                <Link href={`/locais`}>
+                                                                    Editar
+                                                                </Link>
+                                                            </DropdownMenuItem>
+                                                        </DropdownMenuContent>
+                                                    </DropdownMenu>
                                                 </TableCell>
                                             </TableRow>
                                         ))
@@ -136,7 +167,7 @@ export default async function Home() {
                                     {eventos.length > 0 ? (
                                         eventos.map((evento, index) => (
                                             <TableRow key={evento.nome} className={index % 2 === 0 ? 'bg-[#333b49]' : 'bg-[#10141d]'}>
-                                                <TableCell className="py-4 px-6">{evento.nome}</TableCell>
+                                                <TableCell className="py-4 px-2 md:px-6">{evento.nome}</TableCell>
                                                 <TableCell>
                                                     <span
                                                         className={`px-2 py-1 border rounded font-bold text-white border-none ${evento.tipo === 'Show' ? 'bg-green-500' :
@@ -148,11 +179,27 @@ export default async function Home() {
                                                         {evento.tipo}
                                                     </span>
                                                 </TableCell>
-                                                <TableCell className="py-4 px-6">{evento.local.nome}</TableCell>
-                                                <TableCell className="py-4 px-6 text-right">
-                                                    <MoreVertical className="text-blue-400 ml-auto" />
+                                                <TableCell className="py-4 px-2 md:px-6">{evento.local.nome}</TableCell>
+                                                <TableCell className="py-4 px-2 md:px-6 text-right">
+                                                    <DropdownMenu>
+                                                        <DropdownMenuTrigger className='text-blue-400 ml-auto'>
+                                                            <MoreVertical />
+                                                            <span className="sr-only">Ações</span>
+                                                        </DropdownMenuTrigger>
+                                                        <DropdownMenuContent className='bg-[#333b49] border-none text-white'>
+                                                            <DropdownMenuItem asChild>
+                                                                <Link href={`/locais`}>
+                                                                    Ver
+                                                                </Link>
+                                                            </DropdownMenuItem>
+                                                            <DropdownMenuItem asChild>
+                                                                <Link href={`/locais`}>
+                                                                    Editar
+                                                                </Link>
+                                                            </DropdownMenuItem>
+                                                        </DropdownMenuContent>
+                                                    </DropdownMenu>
                                                 </TableCell>
-
                                             </TableRow>
                                         ))
                                     ) : (

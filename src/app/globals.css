@@ -12,6 +12,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  background-color: #191e28;
 }
 
 @layer utilities {
@@ -100,14 +101,3 @@ html, body {
   padding: 0; 
   overflow: hidden;
 }
-
-.navbar-bg {
-  background: transparent; 
-  position: absolute; 
-  top: 0;
-  left: 0;
-  width: 100%; 
-  z-index: 10; 
-  padding: 1rem; 
-}
-   

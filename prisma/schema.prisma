@@ -42,25 +42,39 @@ model Local {
 }
 
 model Evento {
-  id             Int       @id @default(autoincrement())
-  nome           String
-  tipo           String?
-  data           DateTime
-  horario        String
-  horarioFim     DateTime
+  id            Int       @id @default(autoincrement())
+  nome          String
+  tipo          String?
+  data          DateTime
+  horario       String
+  horarioFim    DateTime
 
   // Relacionamento com Local
-  localId        Int
-  local          Local     @relation(fields: [localId], references: [id])
+  localId       Int
+  local         Local     @relation(fields: [localId], references: [id])
 
-  // Portões cadastrados
-  portoes        String[]
+  // Relacionamento com Usuario
+  usuarioId     Int
+  usuario       Usuario   @relation("UsuarioEventos", fields: [usuarioId], references: [id])
 
-  // Contato do Evento
-  email          String?
-  telefone       String?
+  portoes       String[]
+  email         String?
+  telefone      String?
 
-  createdAt      DateTime  @default(now())
+  createdAt     DateTime  @default(now())
+}
 
-  @@unique([localId, data, horario])
+model Usuario {
+  id            Int       @id @default(autoincrement())
+  nome          String
+  email         String    @unique
+  senha         String
+  telefone      String?
+  role          String    
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relacionamento com eventos
+  eventos       Evento[]  @relation("UsuarioEventos")
 }
