@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"; // atualizado para src/components
 import { House, Ticket, MoreVertical } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { Button } from '@/components/ui/button'; // atualizado para src/components
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'; // atualizado para src/components
 import Link from 'next/link';
 import db from '@/db/db';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu'; // atualizado para src/components
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 
 export async function getLocais() {

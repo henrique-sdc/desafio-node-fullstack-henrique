@@ -2,26 +2,32 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Nav } from "@/components/Nav";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "gerenciamento de ingressos",
+  title: "Gerenciamento de Ingressos",
   description: "Gerenciamento de ingressos e locais de eventos",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
-        className={cn("bg-backgroud min-h-screen font-sans antialiased", 
-          inter.variable)}
+        className={cn(
+          "min-h-screen font-sans antialiased",
+          inter.variable
+        )}
       >
-        {children}
+        <Nav children={undefined} />
+        <div className="container">
+          {children}
+        </div>
       </body>
     </html>
   );

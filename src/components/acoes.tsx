@@ -1,8 +1,7 @@
 "use client"
-
 import { useTransition } from "react";
-import { deleteLocal } from "../_actions/locais";
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { deleteLocal } from "@/app/locais/_actions/locais"; // atualizado para app/_actions
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu"; // atualizado para src/components
 import { useRouter } from "next/navigation";
 
 export function ActiveToggleDropdownItem({

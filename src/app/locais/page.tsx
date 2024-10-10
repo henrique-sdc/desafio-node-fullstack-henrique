@@ -1,16 +1,16 @@
 "use client"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb"; // atualizado para src/components
+import { Button } from "@/components/ui/button"; // atualizado para src/components
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"; // atualizado para src/components
+import { Input } from "@/components/ui/input"; // atualizado para src/components
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination"; // atualizado para src/components
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"; // atualizado para src/components
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { MoreVertical, Search } from "lucide-react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { DeleteDropdownItem } from "../_components/acoes";
-import { buscarLocaisPorNome } from "@/app/(home)/_actions/locais";
+import { DeleteDropdownItem } from "@/components/acoes"; // atualizado para src/components
+import { buscarLocaisPorNome } from "@/app/locais/_actions/locais"; // atualizado para app/_actions
 
 interface Local {
     id: number;
@@ -68,7 +68,7 @@ export default function Locais() {
     };
 
     return (
-        <div className="bg-[#191e28] bg-cover bg-center bg-no-repeat min-h-screen w-screen h-screen">
+        <div className="bg-[#191e28] bg-cover bg-center bg-no-repeat min-h-screen w-screen h-screen z-50">
             <main className="space-y-12 p-6">
                 <div className="mx-auto max-w-7xl pt-12">
                     <Breadcrumb>

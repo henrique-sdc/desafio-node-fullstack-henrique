@@ -1,6 +1,6 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { LocalForm } from "../../../_components/LocalForm";
-import { PageHeader } from "../../../_components/Pageheader";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb"; // atualizado para src/components
+import { LocalForm } from "@/components/LocalForm"; // atualizado para src/components
+import { PageHeader } from "@/components/Pageheader"; // atualizado para src/components
 import db from "@/db/db";
 
 export default async function EditarLocalPage({

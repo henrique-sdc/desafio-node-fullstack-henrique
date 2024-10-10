@@ -33,7 +33,7 @@ export function Nav({ children }: { children: ReactNode }) {
     }, [dropdownRef]);
 
     return (
-        <nav className="bg-transparent fixed top-0 left-0 right-0 text-white transition duration-300 font-normal text-base flex justify-between items-center px-4 md:px-8 my-4">
+        <nav className="bg-transparent fixed top-0 left-0 right-0 text-white transition duration-300 font-normal text-base flex justify-between items-center px-4 md:px-8 my-4 z-50">
             <div className="flex items-center">
                 <Link href="/" passHref>
                     <Image
