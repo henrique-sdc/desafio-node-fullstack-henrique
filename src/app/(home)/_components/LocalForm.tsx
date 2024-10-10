@@ -25,7 +25,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         required
                         placeholder="Informe o nome do Local"
                         defaultValue={local?.nome || ""}
-                        className="pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.nome ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.nome && <div className="text-destructive">{error.nome}</div>}
                 </div>
@@ -37,7 +37,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         name="apelido"
                         placeholder="Informe um apelido (caso exista)"
                         defaultValue={local?.apelido || ""}
-                        className="pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.apelido ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.apelido && <div className="text-destructive">{error.apelido}</div>}
                 </div>
@@ -49,7 +49,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                     <select
                         id="tipo"
                         name="tipo"
-                        className="mt-2 pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`mt-2 pl-4 py-2 rounded-lg border-none bg-[#333b49] placeholder:text-[#647085] text-white ${error.tipo ? 'border-red-500' : 'border-gray-300'}`}
                         defaultValue={local?.tipo || ""}
                     >
                         <option value="" disabled>Selecione um tipo</option>
@@ -64,9 +64,9 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         type="text"
                         id="cnpj"
                         name="cnpj"
-                        placeholder="Informe um CNPj (caso exista)"
+                        placeholder="Informe um CNPJ (caso exista)"
                         defaultValue={local?.cnpj || ""}
-                        className="pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.cnpj ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.cnpj && <div className="text-destructive">{error.cnpj}</div>}
                 </div>
@@ -85,7 +85,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         placeholder="Informe a Cidade"
                         defaultValue={local?.cidade || ""}
                         required
-                        className="pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.cidade ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.cidade && <div className="text-destructive">{error.cidade}</div>}
                 </div>
@@ -95,10 +95,10 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         type="text"
                         id="estado"
                         name="estado"
-                        placeholder="Selecione um estado"
+                        placeholder="Informe o Estado"
                         defaultValue={local?.estado || ""}
                         required
-                        className="pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.estado ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.estado && <div className="text-destructive">{error.estado}</div>}
                 </div>
@@ -113,7 +113,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         name="cep"
                         placeholder="Informe o CEP"
                         defaultValue={local?.cep || ""}
-                        className="pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.cep ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.cep && <div className="text-destructive">{error.cep}</div>}
                 </div>
@@ -126,7 +126,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         placeholder="Informe o Endereço"
                         defaultValue={local?.endereco || ""}
                         required
-                        className="pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.endereco ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.endereco && <div className="text-destructive">{error.endereco}</div>}
                 </div>
@@ -141,7 +141,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         name="complemento"
                         placeholder="Informe o complemento"
                         defaultValue={local?.complemento || ""}
-                        className="max-w-[327px] pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`max-w-[327px] pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.complemento ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.complemento && <div className="text-destructive">{error.complemento}</div>}
                 </div>
@@ -159,7 +159,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         name="email"
                         placeholder="Informe um e-mail"
                         defaultValue={local?.email || ""}
-                        className="pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.email ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.email && <div className="text-destructive">{error.email}</div>}
                 </div>
@@ -171,7 +171,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                         name="telefone"
                         placeholder="Informe um telefone"
                         defaultValue={local?.telefone || ""}
-                        className="pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085]"
+                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${error.telefone ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {error.telefone && <div className="text-destructive">{error.telefone}</div>}
                 </div>

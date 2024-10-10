@@ -53,7 +53,7 @@ export default async function Home() {
     const usuarios = await getUsuario();
 
     return (
-        <div className="bghome">
+        <div className="w-screen bghome">
             <main className="space-y-12">
                 <div className="flex flex-col md:flex-row md:ml-24 mt-36 items-center">
                     <Image

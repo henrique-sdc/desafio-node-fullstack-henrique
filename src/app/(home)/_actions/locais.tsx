@@ -90,3 +90,25 @@ export async function deleteLocal(id: string) {
     revalidatePath("/"); 
     redirect("/locais");
 }
+
+export async function buscarLocaisPorNome(termo: string) {
+    const locais = await db.local.findMany({
+        where: {
+            nome: {
+                contains: termo, 
+            }
+        },
+        select: {
+            id: true,
+            nome: true,
+            endereco: true,
+            cidade: true,
+            estado: true,
+            portoes: true,
+            updatedAt: true,
+        },
+        orderBy: { nome: "asc" }
+    });
+
+    return locais;
+}
