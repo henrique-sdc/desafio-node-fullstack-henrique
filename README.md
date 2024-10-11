@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OrgEventos - Gerenciador de Eventos e Locais
 
-## Getting Started
+OrgEventos é um aplicativo web full-stack construído com Next.js, Prisma, PostgreSQL e Tailwind CSS (usando o Shadcn UI). Ele permite gerenciar eventos e locais, incluindo funcionalidades de criação, leitura, atualização e exclusão (CRUD).
 
-First, run the development server:
+## Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* **Next.js:** Framework React para desenvolvimento web.
+* **Prisma:** ORM (Object-Relational Mapper) para interação com o banco de dados.
+* **PostgreSQL:** Banco de dados relacional.
+* **Tailwind CSS:** Framework CSS para estilização.
+* **Shadcn UI:** Biblioteca de componentes React para Tailwind CSS.
+* **Zod:**  Validação de esquema para dados.
+* **Docker:**  Para conteinerização e desenvolvimento local.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Instalação e Execução
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone o repositório:**
 
-## Learn More
+   ```bash
+   git clone https://github.com/henrique-sdc/desafio-node-fullstack-henrique.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Instale as dependências:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm i
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Configure o banco de dados:**
 
-## Deploy on Vercel
+   * Certifique-se de ter o Docker instalado e em execução.
+   * Crie as tabelas do banco de dados usando o Prisma Migrate:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*  Você deve subir o banco de dados com docker usando o comando:
+     ```bash
+       docker-compose up --build
+     ```
+     ```bash
+     npx prisma migrate dev
+     ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Inicie o servidor de desenvolvimento:**
+
+   ```bash
+   npm run dev
+   ```
+
+O aplicativo estará disponível em `http://localhost:3000`.
+
+## Funcionalidades
+
+* **Home:** Visão geral dos últimos eventos e locais adicionados.
+* **Eventos:** Listagem, pesquisa, criação, edição e exclusão de eventos.
+* **Locais:** Listagem, pesquisa, criação, edição e exclusão de locais.
+
+
+## Estrutura do Projeto
+
+* **`app`:**  Contém as rotas e a lógica do lado do servidor.
+* **`components`:** Componentes React reutilizáveis.
+* **`db`:**  Configuração do Prisma.
+* **`public`:** Arquivos estáticos, como imagens.
+* **`prisma`:**  Esquema do Prisma e migrações.
+
+
+## Considerações
+
+* Este projeto utiliza o Shadcn UI para componentes estilizados com Tailwind CSS.
+* A validação de dados é feita com o Zod.
+* O banco de dados PostgreSQL é gerenciado com Docker.
