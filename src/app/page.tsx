@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"; // atualizado para src/components
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { House, Ticket, MoreVertical } from 'lucide-react';
-import { Button } from '@/components/ui/button'; // atualizado para src/components
-import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'; // atualizado para src/components
+import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
 import db from '@/db/db';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu'; // atualizado para src/components
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 
 export async function getLocais() {
@@ -53,7 +53,7 @@ export default async function Home() {
     const usuarios = await getUsuario();
 
     return (
-        <div className="w-screen bghome">
+        <div className="w-screen min-h-screen bghome">
             <main className="space-y-12">
                 <div className="flex flex-col md:flex-row md:ml-24 mt-36 items-center">
                     <Image
@@ -138,11 +138,6 @@ export default async function Home() {
                                                                     Ver
                                                                 </Link>
                                                             </DropdownMenuItem>
-                                                            <DropdownMenuItem asChild>
-                                                                <Link href={`/locais`}>
-                                                                    Editar
-                                                                </Link>
-                                                            </DropdownMenuItem>
                                                         </DropdownMenuContent>
                                                     </DropdownMenu>
                                                 </TableCell>
@@ -188,13 +183,8 @@ export default async function Home() {
                                                         </DropdownMenuTrigger>
                                                         <DropdownMenuContent className='bg-[#333b49] border-none text-white'>
                                                             <DropdownMenuItem asChild>
-                                                                <Link href={`/locais`}>
+                                                                <Link href={`/eventos`}>
                                                                     Ver
-                                                                </Link>
-                                                            </DropdownMenuItem>
-                                                            <DropdownMenuItem asChild>
-                                                                <Link href={`/locais`}>
-                                                                    Editar
                                                                 </Link>
                                                             </DropdownMenuItem>
                                                         </DropdownMenuContent>

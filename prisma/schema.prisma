@@ -38,16 +38,15 @@ model Local {
   updatedAt        DateTime  @updatedAt
   createdAt        DateTime  @default(now())
 
-  eventos          Evento[]
+  eventos          Evento[]   
 }
 
 model Evento {
   id            Int       @id @default(autoincrement())
   nome          String
   tipo          String?
-  data          DateTime
-  horario       String
-  horarioFim    DateTime
+  data          DateTime 
+  horario       String    
 
   // Relacionamento com Local
   localId       Int
@@ -57,17 +56,17 @@ model Evento {
   usuarioId     Int
   usuario       Usuario   @relation("UsuarioEventos", fields: [usuarioId], references: [id])
 
-  portoes       String[]
-  email         String?
-  telefone      String?
+  portoes       String[]   
+  email         String?  
+  telefone      String?  
 
-  createdAt     DateTime  @default(now())
+  createdAt     DateTime  @default(now()) 
 }
 
 model Usuario {
   id            Int       @id @default(autoincrement())
   nome          String
-  email         String    @unique
+  email         String    @unique 
   senha         String
   telefone      String?
   role          String    
@@ -76,5 +75,5 @@ model Usuario {
   updatedAt     DateTime  @updatedAt
 
   // Relacionamento com eventos
-  eventos       Evento[]  @relation("UsuarioEventos")
+  eventos       Evento[]  @relation("UsuarioEventos") 
 }

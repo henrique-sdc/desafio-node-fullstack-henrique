@@ -4,7 +4,6 @@ import db from "@/db/db";
 import fs from "fs/promises";
 import { notFound, redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { toast } from "sonner";
 
 const localSchema = z.object({
     nome: z.string().min(1, "Nome é obrigatório"), 
@@ -27,34 +26,27 @@ export async function addLocal(prevState: unknown, formData: FormData) {
         return result.error.formErrors.fieldErrors;
     }
 
-    const data = result?.data;
-    try {
-        await db.local.create({ 
-            data: {
-                nome: data.nome,
-                apelido: data.apelido,
-                tipo: data.tipo,
-                cnpj: data.cnpj,
-                cidade: data.cidade,
-                estado: data.estado,
-                cep: data.cep,
-                endereco: data.endereco,
-                complemento: data.complemento,
-                email: data.email,
-                telefone: data.telefone,
-                portoes: data.portoes || [],
-            },
-        });
+    const data = result.data;
 
-        
-        revalidatePath("/");
-        redirect("/locais");
-    } catch (error) {
-        console.error(error)
-    } finally {
-        toast.success("Local criado com sucesso!");
-        console.log("Teste")
-    }
+    await db.local.create({ 
+        data: {
+            nome: data.nome,
+            apelido: data.apelido,
+            tipo: data.tipo,
+            cnpj: data.cnpj,
+            cidade: data.cidade,
+            estado: data.estado,
+            cep: data.cep,
+            endereco: data.endereco,
+            complemento: data.complemento,
+            email: data.email,
+            telefone: data.telefone,
+            portoes: data.portoes || [],
+        },
+    });
+
+    revalidatePath("/");
+    redirect("/locais");
 }
 
 export async function updateLocal(id: string, prevState: unknown, formData: FormData) {
