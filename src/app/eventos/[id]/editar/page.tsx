@@ -1,6 +1,6 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { EventoForm } from "@/components/EventoForm";
-import { PageHeader } from "@/components/PageHeader";
+import { PageHeader } from "../../../../components/PageHeader";
 import db from "@/db/db";
 import { notFound } from "next/navigation";
 

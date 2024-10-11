@@ -1,6 +1,6 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { LocalForm } from "@/components/LocalForm";
-import { PageHeader } from "@/components/PageHeader";
+import { PageHeader } from "../../../components/PageHeader";
 
 export default function NovoLocal() {
     return (
