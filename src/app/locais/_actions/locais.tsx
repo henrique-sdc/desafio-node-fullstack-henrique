@@ -1,7 +1,6 @@
 "use server";
 import { z } from "zod";
 import db from "@/db/db";
-import fs from "fs/promises";
 import { notFound, redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
@@ -96,6 +95,7 @@ export async function buscarLocaisPorNome(termo: string) {
         where: {
             nome: {
                 contains: termo, 
+                mode: "insensitive"
             }
         },
         select: {

@@ -11,10 +11,12 @@ import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 export async function getLocais() {
     const locais = await db.local.findMany({
         take: 3,
+        orderBy: { createdAt: 'desc' }, 
         select: {
             nome: true,
             endereco: true,
             portoes: true,
+            createdAt: true 
         }
     });
     return locais;
@@ -23,6 +25,7 @@ export async function getLocais() {
 export async function getEventos() {
     const eventos = await db.evento.findMany({
         take: 3,
+        orderBy: { createdAt: 'desc' },
         select: {
             nome: true,
             tipo: true,
@@ -31,7 +34,9 @@ export async function getEventos() {
                     nome: true
                 }
             },
-        }
+            createdAt: true
+        },
+       
     });
     return eventos;
 }
@@ -203,6 +208,7 @@ export default async function Home() {
                     </div>
                 </div>
             </main>
+            <div className='mb-28'></div>
         </div>
     );
 }

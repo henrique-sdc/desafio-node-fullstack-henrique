@@ -2,7 +2,6 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbS
 import { EventoForm } from "@/components/EventoForm";
 import { PageHeader } from "@/components/PageHeader";
 import db from "@/db/db";
-import { Evento } from "@prisma/client";
 import { notFound } from "next/navigation";
 
 export default async function EditarEventoPage({
@@ -34,6 +33,7 @@ export default async function EditarEventoPage({
                     </Breadcrumb>
                     <div className="pt-6">
                         <PageHeader>Editar Evento</PageHeader>
+                        <p className="text-sm md:text-base mb-4 text-left">*Campos obrigatórios</p>
                     </div>
                 </div>
                 <div className="bg-[#10141d] rounded-3xl p-6 md:p-8 pt-0 mt-8 mb-8 mx-auto max-w-4xl w-full">

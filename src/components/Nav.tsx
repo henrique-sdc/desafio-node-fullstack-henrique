@@ -36,10 +36,10 @@ export function Nav({ children }: { children: ReactNode }) {
 
     return (
         <nav className={cn(
-            "fixed top-0 left-0 right-0 text-white font-normal text-base flex justify-between items-center px-4 md:px-12 py-4 mx-12 z-50",
+            "fixed top-0 left-0 right-0 text-white font-normal text-base flex justify-between items-center px-4 md:px-12 py-4 z-50",
             isHomePage ? "bg-transparent" : "bg-[#191E28]" 
         )}>
-            <div className="flex items-center">
+            <div className="flex items-center mx-12">
                 <Link href="/" passHref>
                     <Image
                         src="/images/logo.svg"
@@ -80,8 +80,8 @@ export function Nav({ children }: { children: ReactNode }) {
                     height={40}
                     className="rounded-full"
                 />
-                <span className="text-white ml-2 hidden md:block">Olá, Nome</span>
-                <button onClick={toggleDropdown} className="ml-2">
+                 <span className="text-white ml-2 hidden md:block">Olá, Nome</span>
+                <button onClick={toggleDropdown} className="ml-2 relative z-10">
                     {isDropdownOpen ? (
                         <Minus className="w-6 h-6 text-white" />
                     ) : (
@@ -90,14 +90,17 @@ export function Nav({ children }: { children: ReactNode }) {
                 </button>
 
                 {isDropdownOpen && (
-                    <div className="absolute right-0 bg-gray-800 text-white rounded-md shadow-lg mt-12">
-                        <div className="px-4 py-2 cursor-pointer hover:bg-gray-700">
-                            <Link href="/" className="px-4 py-2 cursor-pointer hover:bg-gray-700" passHref>
+                    <div 
+                        className="absolute right-0 top-12 bg-gray-800 text-white rounded-md shadow-lg mt-2"
+                        ref={dropdownRef}
+                    >
+                        <div className="px-4 py-2 hover:bg-gray-700">
+                            <Link href="/configuracoes" className="block px-4 py-2 hover:bg-gray-700">
                                 Configurações
                             </Link>
                         </div>
-                        <div className="px-4 py-2 cursor-pointer hover:bg-gray-700">
-                            <Link href="/" className="px-4 py-2 cursor-pointer hover:bg-gray-700" passHref>
+                        <div className="px-4 py-2 hover:bg-gray-700">
+                            <Link href="/logout" className="block px-4 py-2 hover:bg-gray-700">
                                 Logout
                             </Link>
                         </div>

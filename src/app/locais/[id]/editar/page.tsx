@@ -1,4 +1,4 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb"; // atualizado para src/components
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { LocalForm } from "@/components/LocalForm";
 import { PageHeader } from "@/components/PageHeader";
 import db from "@/db/db";
@@ -15,7 +15,7 @@ export default async function EditarLocalPage({
         <>
             <div className="bg-[#191e28] bg-cover bg-center bg-no-repeat min-h-screen w-screen text-white">
                 <div className="space-y-12 p-6 mx-auto mt-12 max-w-7xl">
-                    <div className="px-4 md:px-8 lg:px-44 pt-12">
+                    <div className="px-4 md:px-8 lg:px-44 pt-24">
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem>

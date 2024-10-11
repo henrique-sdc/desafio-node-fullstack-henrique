@@ -19,8 +19,9 @@ import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { MoreVertical, Search } from "lucide-react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { DeleteDropdownItem, DeleteDropdownItemEvento } from "@/components/acoes";
+import { DeleteDropdownItemEvento } from "@/components/acoes";
 import { buscarEventosPorNome } from "@/app/eventos/_actions/eventos";
+
 interface Local {
     nome: string;
     id: number;
@@ -104,7 +105,7 @@ export default function Eventos() {
     return (
         <div className="bg-[#191e28] bg-cover bg-center bg-no-repeat min-h-screen w-screen h-screen z-50">
             <main className="space-y-12 p-6">
-                <div className="mx-auto max-w-7xl pt-12">
+                <div className="mx-auto max-w-7xl pt-24">
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
@@ -135,14 +136,14 @@ function TabelaEventos({ eventos, termo, setTermo, handleSearch, handleInputChan
             <Table className="text-white border-separate border-spacing-0">
                 <TableHeader className="w-full">
                     <TableRow className="hover:bg-transparent">
-                        <TableHead colSpan={6} className="px-4 py-2">
+                        <TableHead colSpan={7} className="">
                             <div className="flex items-center mb-4 mt-4 flex-wrap">
                                 <div className="relative flex items-center flex-grow mb-2 md:mb-0">
                                     <Search className="absolute left-3 text-[#6d99fb] w-4 h-4" />
                                     <Input
                                         type="text"
                                         placeholder="Pesquise por nome do evento"
-                                        className="pl-8 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        className="pl-8 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         style={{ width: '300px', minWidth: '200px' }}
                                         value={termo}
                                         onChange={handleInputChange}
@@ -185,7 +186,16 @@ function TabelaEventos({ eventos, termo, setTermo, handleSearch, handleInputChan
                         eventos.map((evento, index) => (
                             <TableRow key={evento.id} className={index % 2 === 0 ? "bg-[#333b49]" : "bg-[#10141d]"}>
                                 <TableCell className="py-4 px-6">{evento.nome}</TableCell>
-                                <TableCell className="py-4 px-6">{evento.tipo || "Tipo não especificado"}</TableCell>
+                                <TableCell className="py-4 px-6"><span
+                                    className={`px-2 py-1 border rounded font-bold text-white border-none ${
+                                        evento.tipo === 'Show' ? 'bg-green-500' :
+                                        evento.tipo === 'Música' ? 'bg-[#61461f]' :
+                                        evento.tipo === 'Palestra' ? 'bg-red-500' :
+                                        'bg-blue-500' 
+                                    }`}
+                                >
+                                    {evento.tipo || "Tipo não especificado"} 
+                                </span></TableCell>
                                 <TableCell className="py-4 px-6">{evento.local?.nome || "Local não especificado"}</TableCell>
                                 <TableCell className="py-4 px-6">{evento.local?.endereco || "Endereço não disponível"}</TableCell>
                                 <TableCell className="py-4 px-6">{evento.local?.portoes.join(", ") || "Nenhum portão cadastrado"}</TableCell>
@@ -200,7 +210,7 @@ function TabelaEventos({ eventos, termo, setTermo, handleSearch, handleInputChan
                                             <Link href={`/eventos/${evento.id}/editar`}>
                                                 <DropdownMenuItem className="hover:bg-blue-200">Editar</DropdownMenuItem>
                                             </Link>
-                                            <DeleteDropdownItem id={evento.id.toString()} disabled={false} />
+                                            <DeleteDropdownItemEvento id={evento.id.toString()} disabled={false} />
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                 </TableCell>

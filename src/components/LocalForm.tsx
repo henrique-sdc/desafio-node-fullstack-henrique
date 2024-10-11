@@ -184,7 +184,7 @@ export function LocalForm({ local }: { local?: Local | null }) {
                 <div className="flex flex-col">
                     <Label>Insira as Entradas</Label>
                     <div className="flex items-center space-x-1 mt-2">
-                        <Input 
+                        <Input
                             //id="portoes"
                             //name="portoes"
                             //type="text"
@@ -225,7 +225,9 @@ export function LocalForm({ local }: { local?: Local | null }) {
 
             <div className="flex justify-end space-x-4">
                 <Button type="button" className="bg-inherit border-2 hover:bg-red-900">Cancelar</Button>
-                <Button type="submit" className="bg-[#ebf0f9] text-[#3f4654] hover:bg-white">Cadastrar</Button>
+                <Button type="submit" className="bg-[#ebf0f9] text-[#3f4654] hover:bg-white">
+                    {local ? "Salvar" : "Cadastrar"}
+                </Button>
             </div>
         </form>
     );

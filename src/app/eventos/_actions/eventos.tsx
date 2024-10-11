@@ -25,7 +25,6 @@ export async function addEvento(formData: FormData, localId: number) {
 
     const data = result.data;
 
-    // Combina data e hora em um único objeto Date
     const [ano, mes, dia] = data.data.split('-');
     const [hora, minuto] = data.horario.split(':');
     const dataHoraCombinada = new Date(Number(ano), Number(mes) - 1, Number(dia), Number(hora), Number(minuto));
@@ -35,23 +34,22 @@ export async function addEvento(formData: FormData, localId: number) {
             data: {
                 nome: data.nome,
                 tipo: data.tipo,
-                data: dataHoraCombinada, // Usa Date para data
-                horario: data.horario, // Mantém como string
+                data: dataHoraCombinada, 
+                horario: data.horario, 
                 localId: localId,
-                usuarioId: 1, // Certifique-se de que este ID do usuário está correto
+                usuarioId: 1, 
                 email: data.email,
                 telefone: data.telefone,
-                portoes: [], // ou data.portoes se estiver usando
+                portoes: [], 
             },
         });
 
-        // Se você estiver usando Next.js, pode ser que precise retornar ou redirecionar
-        return { success: true }; // Retorna um sucesso após a inserção
+        return { success: true }; 
     } catch (error) {
         console.error("Erro ao criar evento:", error);
         return { formError: "Erro ao criar evento. Por favor, tente novamente." };
     } finally {
-        await prisma.$disconnect(); // Fecha a conexão com o banco
+        await prisma.$disconnect();
     }
 }
 

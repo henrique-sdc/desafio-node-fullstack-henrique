@@ -70,7 +70,7 @@ export default function Locais() {
     return (
         <div className="bg-[#191e28] bg-cover bg-center bg-no-repeat min-h-screen w-screen h-screen z-50">
             <main className="space-y-12 p-6">
-                <div className="mx-auto max-w-7xl pt-12">
+                <div className="mx-auto max-w-7xl pt-24">
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
@@ -108,7 +108,7 @@ function TabelaLocais({ locais, termo, setTermo, handleSearch, handleInputChange
                                     <Input
                                         type="text"
                                         placeholder="Pesquise por nome do local"
-                                        className="pl-8 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] text-[#647085] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        className="pl-8 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         style={{ width: '300px', minWidth: '200px' }}
                                         value={termo}
                                         onChange={handleInputChange}

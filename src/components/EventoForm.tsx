@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { addEvento, getLocais, updateEvento } from "../app/eventos/_actions/eventos";
 import { useRouter } from "next/navigation";
 import { Evento } from "@prisma/client";
+import Link from "next/link";
 
 interface FormErrors {
     nome?: string;
@@ -56,17 +57,17 @@ export function EventoForm({ evento }: { evento?: Evento | null }) {
 
     return (
         <form onSubmit={action} className="space-y-8 mx-auto max-w-2xl">
-            <p className="text-lg font-semibold">Informações do Evento</p>
+            <p className="text-lg font-ligth">Informações básicas</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <Label htmlFor="nome">Nome do Evento*</Label>
+                    <Label htmlFor="nome">Nome do evento*</Label>
                     <Input
                         type="text"
                         id="nome"
                         name="nome"
                         required
                         defaultValue={evento?.nome || ""}
-                        placeholder="Informe o nome do Evento"
+                        placeholder="Informe o nome evento"
                         className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${errors.nome ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {errors.nome && <div className="text-destructive">{errors.nome}</div>}
@@ -90,7 +91,7 @@ export function EventoForm({ evento }: { evento?: Evento | null }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <Label htmlFor="data">Data do Evento*</Label>
+                    <Label htmlFor="data">Data do evento*</Label>
                     <Input
                         type="date"
                         id="data"
@@ -102,7 +103,7 @@ export function EventoForm({ evento }: { evento?: Evento | null }) {
                     {errors.data && <div className="text-destructive">{errors.data}</div>}
                 </div>
                 <div>
-                    <Label htmlFor="horario">Horário do Evento*</Label>
+                    <Label htmlFor="horario">Horário do evento*</Label>
                     <Input
                         type="time"
                         id="horario"
@@ -118,23 +119,29 @@ export function EventoForm({ evento }: { evento?: Evento | null }) {
             <div className="grid grid-cols-1">
                 <div>
                     <Label htmlFor="localId">Selecione um Local*</Label>
-                    <select
-                        id="localId"
-                        name="localId"
-                        value={localId}
-                        onChange={(e) => setLocalId(e.target.value)}
-                        className={`pl-4 py-2 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${errors.localId ? 'border-red-500' : 'border-gray-300'}`}
-                        required
-                    >
-                        <option value="" disabled>Selecione um local</option>
-                        {locais.map((local) => (
-                            <option key={local.id} value={local.id}>{local.nome}</option>
-                        ))}
-                    </select>
-                    {errors.localId && <div className="text-destructive">{errors.localId}</div>}
                 </div>
+                <select
+                    id="localId"
+                    name="localId"
+                    value={localId}
+                    onChange={(e) => setLocalId(e.target.value)}
+                    className={`pl-4 overflow-y-auto py-2 max-w-80 rounded-lg border-none border-gray-300 bg-[#333b49] placeholder:text-[#647085] text-white ${errors.localId ? 'border-red-500' : 'border-gray-300'}`}
+                    required
+                >
+                    <option value="" disabled>Selecione um local</option>
+                    {locais.map((local) => (
+                        <option key={local.id} value={local.id}>{local.nome}</option>
+                    ))}
+                </select>
+                <Link href={"/locais/novo"}>
+                    <p className="text-[#9ed0e6] text-right max-w-80">Cadastrar local</p>
+                </Link>
+                {errors.localId && <div className="text-destructive">{errors.localId}</div>}
             </div>
 
+            <hr />
+
+            <p className="text-lg font-ligth">Contato</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <Label htmlFor="email">E-mail*</Label>
@@ -163,10 +170,12 @@ export function EventoForm({ evento }: { evento?: Evento | null }) {
                 </div>
             </div>
 
+            <hr />
+
             <div className="flex justify-end space-x-4">
                 <Button type="button" className="bg-inherit border-2 hover:bg-red-900" onClick={() => router.push('/eventos')}>Cancelar</Button>
                 <Button type="submit" className="bg-[#ebf0f9] text-[#3f4654] hover:bg-white">
-                    {evento ? "Atualizar" : "Cadastrar"}
+                    {evento ? "Salvar" : "Cadastrar"}
                 </Button>
             </div>
         </form>

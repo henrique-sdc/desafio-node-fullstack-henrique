@@ -7,7 +7,7 @@ export default function NovoLocal() {
         <>
             <div className="bg-[#191e28] bg-cover bg-center bg-no-repeat min-h-screen w-screen text-white">
                 <div className="flex flex-col items-start justify-center p-6 mx-auto mt-12 max-w-7xl space-y-12">
-                    <div className="px-4 sm:px-10 md:px-44">
+                    <div className="px-4 sm:px-10 md:px-44 pt-24">
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem>
